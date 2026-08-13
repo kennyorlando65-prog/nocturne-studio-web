@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Navigation from '@/components/Navigation';
 import { SITE_NAME, SITE_DESCRIPTION, COLORS } from '@/lib/constants';
 import './globals.css';
 
