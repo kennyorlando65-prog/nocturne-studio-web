@@ -86,7 +86,7 @@ export default function Services() {
                 {/* Price & Timeline */}
                 <div style={{ marginBottom: '24px', paddingBottom: '24px', borderBottom: `1px solid ${COLORS.border}` }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '12px', color: color: COLORS.textMuted, textTransform: 'uppercase', letterSpacing: '1px' }}>
+                    <span style={{ fontSize: '12px', color: COLORS.textMuted, textTransform: 'uppercase', letterSpacing: '1px' }}>
                       Starting
                     </span>
                     <span style={{ fontSize: '20px', fontWeight: 'bold', color: COLORS.gold }}>
