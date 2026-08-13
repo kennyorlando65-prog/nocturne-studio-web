@@ -1,0 +1,32 @@
+{
+  "name": "nocturne-studio",
+  "version": "1.0.0",
+  "description": "Premium digital experiences - web design, branding, production",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "next": "^15.0.0",
+    "@supabase/supabase-js": "^2.43.0",
+    "react-hook-form": "^7.48.1",
+    "framer-motion": "^10.16.17",
+    "gray-matter": "^4.0.3",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
+    "typescript": "^5.3.3",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.32",
+    "autoprefixer": "^10.4.16"
+  }
+}

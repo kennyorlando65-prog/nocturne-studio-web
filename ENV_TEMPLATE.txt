@@ -1,0 +1,28 @@
+# SUPABASE
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+# ADMIN AUTH
+ADMIN_PASSWORD_HASH=your_bcrypt_hash_of_password
+NEXT_PUBLIC_ADMIN_ENABLED=true
+
+# JWT SECRET (for sessions)
+JWT_SECRET=your_long_random_secret_key_min_32_chars
+
+# EMAIL (optional - for notifications)
+NODEMAILER_EMAIL=your_email@gmail.com
+NODEMAILER_PASS=your_app_specific_password
+
+# ANALYTICS
+NEXT_PUBLIC_GA_ID=your_google_analytics_id
+
+# SITE CONFIG
+NEXT_PUBLIC_SITE_URL=https://nocturne-studio-theta.vercel.app
+NEXT_PUBLIC_OWNER_EMAIL=kennyorlando65@gmail.com
+
+# RATE LIMITING
+RATE_LIMIT_LOGIN_MAX=5
+RATE_LIMIT_LOGIN_WINDOW=900000
+RATE_LIMIT_CONTACT_MAX=3
+RATE_LIMIT_CONTACT_WINDOW=3600000
