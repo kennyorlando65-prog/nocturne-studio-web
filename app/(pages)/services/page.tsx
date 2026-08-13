@@ -194,7 +194,7 @@ export default function Services() {
               <p style={{ fontSize: '20px', fontWeight: 'bold', color: COLORS.gold, marginBottom: '16px' }}>
                 ₦300,000
               </p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px', color: COLORS.text', marginBottom: '20px', textAlign: 'left' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px', color: COLORS.text, marginBottom: '20px', textAlign: 'left' }}>
                 <li style={{ marginBottom: '8px' }}>✓ Logo & brand identity</li>
                 <li style={{ marginBottom: '8px' }}>✓ Full website design</li>
                 <li style={{ marginBottom: '8px' }}>✓ 6-10 weeks</li>
