@@ -251,7 +251,7 @@ export default function Services() {
               <p style={{ fontSize: '20px', fontWeight: 'bold', color: COLORS.gold, marginBottom: '16px' }}>
                 ₦500,000
               </p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px', color: COLORS.text', marginBottom: '20px', textAlign: 'left' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px', color: COLORS.text, marginBottom: '20px', textAlign: 'left' }}>
                 <li style={{ marginBottom: '8px' }}>✓ Complete brand identity</li>
                 <li style={{ marginBottom: '8px' }}>✓ Full website</li>
                 <li style={{ marginBottom: '8px' }}>✓ Social media setup</li>
@@ -292,7 +292,7 @@ export default function Services() {
               <p style={{ fontSize: '20px', fontWeight: 'bold', color: COLORS.gold, marginBottom: '16px' }}>
                 ₦800,000+
               </p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px', color: COLORS.text', marginBottom: '20px', textAlign: 'left' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px', color: COLORS.text, marginBottom: '20px', textAlign: 'left' }}>
                 <li style={{ marginBottom: '8px' }}>✓ Everything included</li>
                 <li style={{ marginBottom: '8px' }}>✓ Custom integrations</li>
                 <li style={{ marginBottom: '8px' }}>✓ Advanced animations</li>
@@ -402,7 +402,7 @@ export default function Services() {
           >
             Ready to Start?
           </h2>
-          <p style={{ fontSize: '16px', color: COLORS.textMuted', marginBottom: '32px' }}>
+          <p style={{ fontSize: '16px', color: COLORS.textMuted, marginBottom: '32px' }}>
             Let's talk about your project. We'll understand what you need and deliver beyond expectations.
           </p>
           <Link
@@ -424,4 +424,4 @@ export default function Services() {
       </section>
     </div>
   );
-}
+            }
