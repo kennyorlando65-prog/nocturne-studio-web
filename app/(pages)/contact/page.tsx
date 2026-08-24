@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { COLORS } from '@/lib/constants';
 
 export default function Contact() {
@@ -337,4 +336,4 @@ export default function Contact() {
       </section>
     </div>
   );
-}
+                }
