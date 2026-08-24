@@ -15,8 +15,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const clientIp = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
-
     if (!verifyPassword(password, ADMIN_PASSWORD_HASH)) {
       return NextResponse.json(
         { error: 'Invalid password' },
@@ -46,4 +44,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-       }
+}
