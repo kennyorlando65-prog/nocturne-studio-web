@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { COLORS, BLOG_POSTS } from '@/lib/constants';
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = BLOG_POSTS.find((p) => p.slug === params.slug);
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = BLOG_POSTS.find((p) => p.slug === slug);
 
   if (!post) {
     return (
@@ -25,7 +26,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     );
   }
 
-  const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== params.slug).slice(0, 3);
+  const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, 3);
 
   return (
     <div>
@@ -280,4 +281,4 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       </section>
     </div>
   );
-        }
+                     }
