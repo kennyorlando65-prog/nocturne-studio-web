@@ -1,132 +1,241 @@
 import Link from 'next/link';
 import { COLORS, BLOG_POSTS } from '@/lib/constants';
 
-export default function Blog() {
-  // Group posts by category
-  const categories = Array.from(new Set(BLOG_POSTS.map((p) => p.category)));
+export default function BlogPost({ params }: { params: { slug: string } }) {
+  const post = BLOG_POSTS.find((p) => p.slug === params.slug);
+
+  if (!post) {
+    return (
+      <div style={{ padding: '80px 24px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '28px', marginBottom: '16px' }}>Post Not Found</h1>
+        <p style={{ color: COLORS.textMuted, marginBottom: '24px' }}>
+          Sorry, the blog post you are looking for does not exist.
+        </p>
+        <Link
+          href="/blog"
+          style={{
+            color: COLORS.gold,
+            textDecoration: 'none',
+            fontWeight: 'bold',
+          }}
+        >
+          Back to Blog
+        </Link>
+      </div>
+    );
+  }
+
+  const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== params.slug).slice(0, 3);
 
   return (
     <div>
-      {/* Header */}
+      {/* Hero */}
       <section
         style={{
-          padding: '80px 24px 40px',
+          padding: '80px 24px',
+          background: COLORS.darkGray,
           borderBottom: `1px solid ${COLORS.border}`,
         }}
       >
-        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <p
+            style={{
+              fontSize: '12px',
+              color: COLORS.textMuted,
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              marginBottom: '12px',
+            }}
+          >
+            {new Date(post.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </p>
           <h1
             style={{
-              fontSize: '48px',
-              marginBottom: '16px',
+              fontSize: '44px',
+              marginBottom: '24px',
               fontFamily: "'Cormorant Garamond', serif",
             }}
           >
-            Insights
+            {post.title}
           </h1>
-          <p style={{ fontSize: '16px', color: COLORS.textMuted, maxWidth: '600px', margin: '0 auto' }}>
-            Design, development, and branding insights from our team. Thoughts on web trends, process, and building premium digital experiences.
+          <p style={{ fontSize: '18px', color: COLORS.textMuted, lineHeight: 1.6 }}>
+            {post.excerpt}
           </p>
         </div>
       </section>
 
-      {/* Blog Posts Grid */}
+      {/* Content */}
       <section style={{ padding: '80px 24px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          {/* Hero Image */}
+          {post.image && (
+            <div
+              style={{
+                width: '100%',
+                height: '400px',
+                background: COLORS.darkGray,
+                border: `1px solid ${COLORS.border}`,
+                borderRadius: '4px',
+                marginBottom: '48px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <div style={{ fontSize: '48px' }}>📷</div>
+            </div>
+          )}
+
+          {/* Article Body */}
+          <article
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-              gap: '32px',
+              fontSize: '16px',
+              lineHeight: 1.8,
+              color: COLORS.text,
             }}
           >
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.id}
-                href={`/blog/${post.slug}`}
+            <div style={{ marginBottom: '32px' }}>
+              <h2
                 style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  display: 'block',
+                  fontSize: '28px',
+                  marginBottom: '16px',
+                  color: COLORS.white,
+                  fontFamily: "'Cormorant Garamond', serif",
                 }}
               >
-                <div
-                  style={{
-                    background: COLORS.darkGray,
-                    border: `1px solid ${COLORS.border}`,
-                    padding: '24px',
-                    borderRadius: '4px',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = COLORS.gold;
-                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = COLORS.border;
-                    (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-                  }}
-                >
-                  {/* Category */}
-                  <div
-                    style={{
-                      fontSize: '11px',
-                      color: COLORS.gold,
-                      textTransform: 'uppercase',
-                      letterSpacing: '1px',
-                      marginBottom: '12px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    {post.category}
-                  </div>
+                {post.title}
+              </h2>
+              <p>{post.excerpt}</p>
+            </div>
 
-                  {/* Title */}
-                  <h3
-                    style={{
-                      fontSize: '20px',
-                      fontFamily: "'Cormorant Garamond', serif",
-                      marginBottom: '12px',
-                      color: COLORS.white,
-                      flexGrow: 1,
-                    }}
-                  >
-                    {post.title}
-                  </h3>
+            <div style={{ marginBottom: '32px' }}>
+              <p style={{ marginBottom: '16px' }}>
+                {post.content}
+              </p>
+            </div>
 
-                  {/* Meta */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px', paddingTop: '16px', borderTop: `1px solid ${COLORS.border}` }}>
-                    <div style={{ fontSize: '12px', color: COLORS.textMuted }}>
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </div>
-                    <div style={{ fontSize: '12px', color: COLORS.textMuted }}>
-                      {post.readTime} min read
-                    </div>
-                  </div>
+            <div
+              style={{
+                background: COLORS.darkGray,
+                border: `1px solid ${COLORS.border}`,
+                padding: '24px',
+                borderRadius: '4px',
+                marginBottom: '32px',
+              }}
+            >
+              <p style={{ fontSize: '14px', color: COLORS.textMuted }}>
+                <strong style={{ color: COLORS.gold }}>Key Takeaway:</strong> {post.excerpt}
+              </p>
+            </div>
+          </article>
 
-                  {/* CTA */}
-                  <div
-                    style={{
-                      marginTop: '16px',
-                      fontSize: '13px',
-                      color: COLORS.gold,
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Read Article →
-                  </div>
-                </div>
-              </Link>
-            ))}
+          {/* Author */}
+          <div
+            style={{
+              background: COLORS.darkGray,
+              border: `1px solid ${COLORS.border}`,
+              padding: '32px',
+              borderRadius: '4px',
+              marginBottom: '48px',
+            }}
+          >
+            <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+              <div
+                style={{
+                  width: '64px',
+                  height: '64px',
+                  background: COLORS.dark,
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '28px',
+                }}
+              >
+                ✦
+              </div>
+              <div>
+                <h4 style={{ fontSize: '16px', marginBottom: '4px', color: COLORS.white }}>
+                  Joshua Kenny
+                </h4>
+                <p style={{ fontSize: '13px', color: COLORS.textMuted }}>
+                  Creative director at Nocturne Studio. Obsessed with detail, design, and delivering results.
+                </p>
+              </div>
+            </div>
           </div>
+
+          {/* Related Posts */}
+          {relatedPosts.length > 0 && (
+            <div>
+              <h3
+                style={{
+                  fontSize: '24px',
+                  marginBottom: '32px',
+                  fontFamily: "'Cormorant Garamond', serif",
+                }}
+              >
+                Related Articles
+              </h3>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                  gap: '24px',
+                }}
+              >
+                {relatedPosts.map((relatedPost) => (
+                  <Link
+                    key={relatedPost.slug}
+                    href={`/blog/${relatedPost.slug}`}
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <div
+                      style={{
+                        background: COLORS.darkGray,
+                        border: `1px solid ${COLORS.border}`,
+                        padding: '24px',
+                        borderRadius: '4px',
+                        transition: 'all 0.3s ease',
+                        cursor: 'pointer',
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLElement).style.borderColor = COLORS.gold;
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLElement).style.borderColor = COLORS.border;
+                      }}
+                    >
+                      <p style={{ fontSize: '12px', color: COLORS.textMuted, marginBottom: '8px' }}>
+                        {new Date(relatedPost.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </p>
+                      <h4
+                        style={{
+                          fontSize: '16px',
+                          marginBottom: '12px',
+                          color: COLORS.white,
+                          fontFamily: "'Cormorant Garamond', serif",
+                        }}
+                      >
+                        {relatedPost.title}
+                      </h4>
+                      <div style={{ fontSize: '12px', color: COLORS.textMuted }}>
+                        Read →
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -139,18 +248,18 @@ export default function Blog() {
           borderTop: `1px solid ${COLORS.border}`,
         }}
       >
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <h2
             style={{
-              fontSize: '36px',
-              marginBottom: '24px',
+              fontSize: '32px',
+              marginBottom: '16px',
               fontFamily: "'Cormorant Garamond', serif",
             }}
           >
-            Ready to Build?
+            Ready to Start Your Project?
           </h2>
-          <p style={{ fontSize: '16px', color: COLORS.textMuted, marginBottom: '32px' }}>
-            These insights come from real projects. Let's build something premium together.
+          <p style={{ fontSize: '15px', color: COLORS.textMuted, marginBottom: '32px' }}>
+            Let's discuss how we can help your brand shine.
           </p>
           <Link
             href="/contact"
@@ -165,7 +274,7 @@ export default function Blog() {
               display: 'inline-block',
             }}
           >
-            Start Your Project
+            Get in Touch
           </Link>
         </div>
       </section>
