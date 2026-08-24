@@ -1,3 +1,6 @@
+export const SITE_NAME = 'Nocturne Studio';
+export const SITE_DESCRIPTION = 'Premium creative agency. Brand identity, web design, social media. Based in Lagos.';
+
 export const COLORS = {
   dark: '#0a0a0a',
   darkGray: '#1a1a1a',
@@ -38,7 +41,7 @@ export const SERVICES = [
   },
 ];
 
-export const PORTFOLIO_ITEMS = [
+export const PROJECTS = [
   {
     id: 1,
     slug: 'luxury-brand-identity',
@@ -74,6 +77,59 @@ export const PORTFOLIO_ITEMS = [
     year: 2023,
     image: true,
     content: 'Created a modern, trustworthy brand identity for a financial technology platform.',
+  },
+];
+
+export const PORTFOLIO_ITEMS = PROJECTS;
+
+export const TESTIMONIALS = [
+  {
+    id: 1,
+    name: 'Chioma Adeyemi',
+    company: 'Luxe Collective',
+    role: 'Founder',
+    quote: 'Nocturne Studio did not just design a brand—they understood our vision and brought it to life beautifully.',
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: 'David Okonkwo',
+    company: 'StyleHub',
+    role: 'CEO',
+    quote: 'The website has transformed our business. Conversions are up, and our customers love the experience.',
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: 'Zainab Hassan',
+    company: 'FinFlow',
+    role: 'Co-founder',
+    quote: 'Working with Joshua and the team was smooth, professional, and results-driven. Highly recommended.',
+    rating: 5,
+  },
+];
+
+export const FORM_FIELDS = [
+  {
+    name: 'name',
+    label: 'Full Name',
+    type: 'text',
+    required: true,
+    placeholder: 'Your name',
+  },
+  {
+    name: 'email',
+    label: 'Email Address',
+    type: 'email',
+    required: true,
+    placeholder: 'your@email.com',
+  },
+  {
+    name: 'message',
+    label: 'Tell us about your project',
+    type: 'textarea',
+    required: true,
+    placeholder: 'What do you need? What are your goals?',
   },
 ];
 
